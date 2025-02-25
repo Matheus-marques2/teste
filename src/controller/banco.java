@@ -32,7 +32,7 @@ public class banco {
 
             if (resposta.equals("S")) {  
                 System.out.println("Informe o saldo inicial: ");
-                saldoInicial = scan.nextDouble();
+                saldoInicial = scan.nextDouble(); scan.nextLine();
                 
                 if (saldoInicial < 0 ) { // verificador que não permite numero negativo
                     System.out.println("não é permitido começar uma conta com saldo negativo, o valor do saldo inicial será 0");
