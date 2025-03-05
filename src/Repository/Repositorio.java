@@ -1,5 +1,5 @@
 
-package controller;
+package Repository;
 
 import java.util.List;
 import model.Conta;

@@ -2,22 +2,33 @@
 package model;
 
 
+import model.Enums.TipoTaxaSaque;
+import model.Enums.MensagemOperacao;
+import model.Enums.TipoConta;
+
 public class ContaCorrente extends Conta implements Tarifavel{ // ContaCorrente extends conta pq é subclasse de conta e implements Tarifavel pq é suscetivel às tarifas
 
     
+   
+    private final TipoTaxaSaque tipoTaxaSaque;
     
-    private static final double taxaSaque = 2.5;
     
-    
-    public ContaCorrente(String titular, double saldo, int numConta) {
-        super (titular, saldo, numConta);
+    public ContaCorrente(String titular, double saldo, int numConta,TipoTaxaSaque tipoTaxaSaque, TipoConta tipoConta) {
+        super (titular, saldo, numConta, tipoConta);
+        
+        this.tipoTaxaSaque = tipoTaxaSaque;
+        
     }
 
+  
+
+    
+    
     @Override
     public void aplicarTarifaMensal(double tarifa) { // metodo de tarifa mensal
         if (tarifa > 0){
             this.saldo -= tarifa;
-            System.out.println("A tarifa mensal de: R$" + tarifa + " foi aplicada.");
+            System.out.println(MensagemOperacao.TARIFA_APLICADA.getMensagem() + "R$" + tarifa);
         }
         
         
@@ -33,12 +44,12 @@ public class ContaCorrente extends Conta implements Tarifavel{ // ContaCorrente 
     
     @Override
     public double sacar (double valor) { // metodo de saque sobrescrito, foi preciso adicionar taxa de saque
-        if (valor > 0 && valor + taxaSaque <= saldo){ // verifica se o valor é positivo e se é menor ou igual ao saldo
-           saldo -= (valor + taxaSaque); 
-           System.out.println("O saque de " + valor + "foi feita com sucesso");
-           System.out.println("A taxa de saque de " + taxaSaque + "foi aplicada"); 
+        if (valor > 0 && valor + tipoTaxaSaque.getValor() <= saldo){ // verifica se o valor é positivo e se é menor ou igual ao saldo
+           saldo -= (valor + tipoTaxaSaque.getValor()); 
+           System.out.println(MensagemOperacao.SAQUE_SUCESSO.getMensagem() + "(" + valor + ")");
+           System.out.println(MensagemOperacao.SAQUE_TAXA_APLICADA.getMensagem() + TipoTaxaSaque.COMUM.getValor()); 
         }else {
-            System.out.println("o valor inserido é inválido, tente novamente.");
+            System.out.println(MensagemOperacao.VALOR_INVALIDO.getMensagem());
         }
         return saldo;
         
@@ -49,9 +60,9 @@ public class ContaCorrente extends Conta implements Tarifavel{ // ContaCorrente 
             this.saldo -= valor;
             contaPoupanca.depositar(valor);
            
-            System.out.println("o valor de " + valor + "foi aplicado na conta poupanca");
+            System.out.println(MensagemOperacao.TRANSFERENCIA_SUCESSO.getMensagem() + "(" + valor + ")");
         }else {
-            System.out.println("o valor digitado é inválido, tente novamente");
+            System.out.println(MensagemOperacao.VALOR_INVALIDO.getMensagem());
         }
         
         
