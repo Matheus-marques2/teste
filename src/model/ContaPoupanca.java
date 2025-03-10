@@ -19,8 +19,10 @@ public class ContaPoupanca extends Conta {
     
     
     public void resgatar (double valor, ContaCorrente contaCorrente){ // tira da conta poupanca e manda pra conta corrente
-        if (valor > 0 && valor <= this.saldo){ // verifica se o valor é maior que zero e se está dentro do valor do saldo
-            this.saldo -= valor;
+        if (valor > 0 && valor <= getSaldo()){ // verifica se o valor é maior que zero e se está dentro do valor do saldo
+            double saldoAtual = getSaldo();
+            saldoAtual -= valor;
+            setSaldo(saldoAtual);
             contaCorrente.depositar(valor);
             
             System.out.println(MensagemOperacao.RESGATE_SUCESSO.getMensagem());

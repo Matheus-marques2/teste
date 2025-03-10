@@ -5,18 +5,15 @@ import java.util.Scanner;
 import model.ContaCorrente;
 import model.ContaPoupanca;
 import Repository.Repositorio;
-import controller.Banco;
 import model.Cliente;
 
 
 public class Operacoes {
-    
-    ContaPoupanca c2 = new ContaPoupanca();
+       
     Banco b = new Banco();
-    Repositorio r = new Repositorio();
-    ContaCorrente c = new ContaCorrente();
+    Repositorio r = new Repositorio();  
     Scanner scan = new Scanner(System.in);
-    
+     
     public void menu(){
         
         Cliente cliente = null;
@@ -44,6 +41,9 @@ public class Operacoes {
     
                 }                            
                 case 2 -> {
+                    if (cliente == null){
+                        System.out.println("cliente inexistente, crie uma conta.");
+                    }
                     if (cliente.getContaCorrente() != null) {
                     System.out.println("Digite o valor a ser depositado: ");
                     double valor = scan.nextDouble();
@@ -54,6 +54,9 @@ public class Operacoes {
                 }               
             
                 case 3 -> {
+                    if (cliente == null){
+                        System.out.println("cliente inexistente, crie uma conta.");
+                    }
                     if (cliente.getContaCorrente() != null) {
                     System.out.println("Digite o valor a ser sacado: ");
                     double valor = scan.nextDouble();
@@ -64,6 +67,9 @@ public class Operacoes {
                 }
             
                 case 4 -> {
+                    if (cliente == null){
+                        System.out.println("cliente inexistente, crie uma conta.");
+                    }
                     if (cliente.getContaCorrente() != null && cliente.getContaPoupanca() != null) {
                     System.out.println("Digite o valor a ser aplicado: ");
                     double valor = scan.nextDouble();
@@ -74,6 +80,9 @@ public class Operacoes {
                 }
             
                 case 5 -> {
+                    if (cliente == null){
+                        System.out.println("cliente inexistente, crie uma conta.");
+                    }
                     if (cliente.getContaPoupanca() != null && cliente.getContaCorrente() != null) {
                     System.out.println("Digite o valor a ser resgatado: ");
                     double valor = scan.nextDouble();

@@ -8,7 +8,7 @@ public abstract class Conta {
      
     
     private String titular;
-    protected double saldo; // protected para que a subclasse ContaCorrente possa ter acesso
+    private double saldo; // protected para que a subclasse ContaCorrente possa ter acesso
     private int numConta;
     private TipoConta tipoConta;
     

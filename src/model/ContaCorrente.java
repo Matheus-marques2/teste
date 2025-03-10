@@ -30,7 +30,8 @@ public class ContaCorrente extends Conta implements Tarifavel{ // ContaCorrente 
     @Override
     public void aplicarTarifaMensal(double tarifa) { // metodo de tarifa mensal
         if (tarifa > 0){
-            this.saldo -= tarifa;
+            double saldoAtual = getSaldo();
+            saldoAtual -= tarifa;
             System.out.println(MensagemOperacao.TARIFA_APLICADA.getMensagem() + "R$" + tarifa);
         }
         
@@ -40,27 +41,32 @@ public class ContaCorrente extends Conta implements Tarifavel{ // ContaCorrente 
     @Override
     public void cobrarTaxa(double valor) { // metodo de cobrar taxa única
         if (valor > 0){
-            this.saldo -= valor;
+            double saldoAtual = getSaldo();
+            saldoAtual -= valor;
             System.out.println("Cobrança de: R$" + valor + " foi aplicada.");
         }
     }
     
     @Override
     public double sacar (double valor) { // metodo de saque sobrescrito, foi preciso adicionar taxa de saque
-        if (valor > 0 && valor + tipoTaxaSaque.getValor() <= saldo){ // verifica se o valor é positivo e se é menor ou igual ao saldo
-           saldo -= (valor + tipoTaxaSaque.getValor()); 
+        if (valor > 0 && valor + tipoTaxaSaque.getValor() <= getSaldo()){ // verifica se o valor é positivo e se é menor ou igual ao saldo
+           double saldoAtual = getSaldo(); 
+           saldoAtual -= (valor + tipoTaxaSaque.getValor());
+           setSaldo(saldoAtual);
            System.out.println(MensagemOperacao.SAQUE_SUCESSO.getMensagem() + "(" + valor + ")");
            System.out.println(MensagemOperacao.SAQUE_TAXA_APLICADA.getMensagem() + " R$: " + TipoTaxaSaque.COMUM.getValor()); 
         }else {
             System.out.println(MensagemOperacao.VALOR_INVALIDO.getMensagem());
         }
-        return saldo;
+        return getSaldo();
         
         
     }
     public void aplicar (double valor, ContaPoupanca contaPoupanca){ //transfere da conta corrente pra conta poupanca
-        if (valor > 0 && valor <= this.saldo){ // verifica se o valor é maior que zero e se é menor ou igual ao saldo
-            this.saldo -= valor;
+        if (valor > 0 && valor <= getSaldo()){ // verifica se o valor é maior que zero e se é menor ou igual ao saldo
+            double saldoAtual = getSaldo();
+            saldoAtual -= valor;
+            setSaldo(saldoAtual);
             contaPoupanca.depositar(valor);
            
             System.out.println(MensagemOperacao.TRANSFERENCIA_SUCESSO.getMensagem() + "(" + valor + ")");
