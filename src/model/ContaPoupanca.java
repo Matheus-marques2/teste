@@ -7,7 +7,9 @@ import model.Enums.TipoConta;
 
 public class ContaPoupanca extends Conta {
     
-    
+    public ContaPoupanca(){
+       super("", 0.0, 0, TipoConta.CORRENTE);
+    }
     
     public ContaPoupanca (String titular, double saldo, int numConta, TipoConta tipoConta){
         super (titular, saldo, numConta, tipoConta);

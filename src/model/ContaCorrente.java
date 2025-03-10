@@ -10,8 +10,11 @@ public class ContaCorrente extends Conta implements Tarifavel{ // ContaCorrente 
 
     
    
-    private final TipoTaxaSaque tipoTaxaSaque;
+    private TipoTaxaSaque tipoTaxaSaque;
     
+    public ContaCorrente(){
+       super("", 0.0, 0, TipoConta.CORRENTE);
+    }
     
     public ContaCorrente(String titular, double saldo, int numConta,TipoTaxaSaque tipoTaxaSaque, TipoConta tipoConta) {
         super (titular, saldo, numConta, tipoConta);
@@ -47,7 +50,7 @@ public class ContaCorrente extends Conta implements Tarifavel{ // ContaCorrente 
         if (valor > 0 && valor + tipoTaxaSaque.getValor() <= saldo){ // verifica se o valor é positivo e se é menor ou igual ao saldo
            saldo -= (valor + tipoTaxaSaque.getValor()); 
            System.out.println(MensagemOperacao.SAQUE_SUCESSO.getMensagem() + "(" + valor + ")");
-           System.out.println(MensagemOperacao.SAQUE_TAXA_APLICADA.getMensagem() + TipoTaxaSaque.COMUM.getValor()); 
+           System.out.println(MensagemOperacao.SAQUE_TAXA_APLICADA.getMensagem() + " R$: " + TipoTaxaSaque.COMUM.getValor()); 
         }else {
             System.out.println(MensagemOperacao.VALOR_INVALIDO.getMensagem());
         }

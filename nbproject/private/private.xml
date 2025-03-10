@@ -4,13 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/view/Principal.java</file>
+            <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/controller/Banco.java</file>
             <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/model/Conta.java</file>
+            <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/model/Enums.java</file>
             <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/model/ContaCorrente.java</file>
-            <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/controller/Repositorio.java</file>
             <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/model/ContaPoupanca.java</file>
             <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/model/Cliente.java</file>
             <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/model/Tarifavel.java</file>
-            <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/controller/banco.java</file>
+            <file>file:/C:/Users/mathm/OneDrive/Documentos/NetBeansProjects/ContaBancaria/src/Repository/Repositorio.java</file>
         </group>
     </open-files>
 </project-private>

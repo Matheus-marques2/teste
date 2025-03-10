@@ -33,7 +33,7 @@ public class Enums {
     VALOR_INVALIDO("O valor inserido é inválido, tente novamente"),
     TRANSFERENCIA_SUCESSO("Transferência realizada com sucesso"),
     TRANSFERENCIA_INVALIDA("O valor de transferência é inválido"),
-    RESGATE_SUCESSO ("O valor transferido com sucesso para conta corrente"),
+    RESGATE_SUCESSO ("O valor foi transferido com sucesso para conta corrente"),
     SALDO_INICIAL_INVALIDO("não é permitido começar uma conta com saldo negativo, o valor do saldo inicial será 0");
 
     private final String mensagem;

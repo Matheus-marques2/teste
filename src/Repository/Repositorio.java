@@ -11,25 +11,29 @@ public class Repositorio {
     
     
     
-    private final List <Conta> Contas = new ArrayList <>(); // lista que vai guardar as contas criadas
+    private static final List <Conta> Contas = new ArrayList <>(); // lista que vai guardar as contas criadas
     
     
     
-    public void adicionarContaCorrente (ContaCorrente conta){
+    public static void adicionarContaCorrente (ContaCorrente cc){
         
-        Contas.add(conta);
+        Contas.add(cc);
     }
     
-    public void adicionarContaPoupanca (ContaPoupanca conta){
+    public static void adicionarContaPoupanca (ContaPoupanca cp){
         
-        Contas.add(conta);
+        Contas.add(cp);
     }
     
-    public void MostrarContas (){
+    public static void MostrarContas (){
         
-        for (Conta conta : Contas){ // para cada conta na lista contas exibe os dados
-            System.out.println(conta.exibirDados());
-            System.out.println("------------------");
+         if (Contas.isEmpty()) {
+            System.out.println("Não há contas cadastradas.");
+        } else {
+            for (Conta conta : Contas) { // para cada conta na lista contas, exibe os dados
+                System.out.println(conta.exibirDados());
+                System.out.println("------------------");
+            }
             
         }
     }

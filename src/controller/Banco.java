@@ -8,10 +8,11 @@ package controller;
  import model.Enums.TipoConta;
  import model.Enums.TipoTaxaSaque;
  import model.Enums.MensagemOperacao;
- 
+ import Repository.Repositorio;
 
 public class Banco {
     
+        Repositorio r = new Repositorio();
         Scanner scan = new Scanner (System.in);
                 
         // metodo para criacao de cliente
@@ -55,28 +56,34 @@ public class Banco {
                     saldoInicialPoupanca = 0;
                 }      
             }
-                           
+            
+            Cliente cliente = null;
+            
             switch (escolha) {
                 case 1 -> {
                     ContaCorrente cc = new ContaCorrente (nome, saldoInicialCorrente, numContaCorrente, TipoTaxaSaque.COMUM,  TipoConta.CORRENTE);
-                    return new Cliente (nome, cc, null); // null pq nesse caso a conta poupanca n existe
+                    r.adicionarContaCorrente(cc);
+                    cliente = new Cliente (nome, cc, null); // null pq nesse caso a conta poupanca n existe                   
                 }
                 case 2 -> {
                     ContaPoupanca cp = new ContaPoupanca (nome, saldoInicialPoupanca, numContaPoupanca, TipoConta.POUPANCA);
-                    return new Cliente (nome, null, cp); // null pq nesse caso a conta corrente n existe
+                    r.adicionarContaPoupanca(cp);
+                    cliente = new Cliente (nome, null, cp); // null pq nesse caso a conta corrente n existe
                 }
                 case 3 -> {
                     ContaPoupanca cp = new ContaPoupanca (nome, saldoInicialPoupanca, numContaPoupanca, TipoConta.POUPANCA);
+                    r.adicionarContaPoupanca(cp);
                     ContaCorrente cc = new ContaCorrente (nome, saldoInicialCorrente, numContaCorrente, TipoTaxaSaque.COMUM, TipoConta.CORRENTE);
-                    return new Cliente (nome, cc, cp); // null pq nesse caso a conta corrente n existe
+                    r.adicionarContaCorrente(cc);
+                    cliente = new Cliente (nome, cc, cp); // null pq nesse caso a conta corrente n existe
                 }
                 default -> { // caso digite algo diferente de 1 e 2
                     System.out.println(MensagemOperacao.VALOR_INVALIDO.getMensagem());
-                    return null; 
+                     
                 }
             }
             
-            
+            return cliente;
             
             
            
